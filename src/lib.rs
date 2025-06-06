@@ -41,6 +41,10 @@ pub mod prelude {
     pub use super::{SvgPlugin, SvgSet};
     #[cfg(any(feature = "2d", feature = "3d"))]
     pub use crate::origin::Origin;
+    #[cfg(feature = "2d")]
+    pub use crate::render::Svg2d;
+    #[cfg(feature = "3d")]
+    pub use crate::render::Svg3d;
     pub use crate::svg::Svg;
     pub use lyon_tessellation::{
         FillOptions, FillRule, LineCap, LineJoin, Orientation, StrokeOptions,
