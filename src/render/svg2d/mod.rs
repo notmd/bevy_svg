@@ -12,6 +12,8 @@ use bevy::{
 mod bundle;
 mod plugin;
 
+pub use bundle::Svg2dBundle;
+
 /// Handle to the custom shader with a unique random ID
 pub const SVG_2D_SHADER_HANDLE: Handle<Shader> =
     weak_handle!("00000000-0000-0000-762a-bdb29826d266");
