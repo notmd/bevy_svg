@@ -9,8 +9,6 @@ use bevy::{
     transform::components::{GlobalTransform, Transform},
 };
 
-use crate::origin::Origin;
-
 use super::Svg2d;
 
 /// A Bevy [`Bundle`] representing an SVG entity.
@@ -24,7 +22,6 @@ pub struct Svg2dBundle {
     pub svg: Svg2d,
     pub mesh_2d: Mesh2d,
     /// [`Origin`] of the coordinate system and as such the origin for the Bevy position.
-    pub origin: Origin,
     pub transform: Transform,
     pub global_transform: GlobalTransform,
     pub visibility: Visibility,

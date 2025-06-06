@@ -22,5 +22,5 @@ fn main() {
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let svg = asset_server.load("neutron_star.svg");
     commands.spawn(Camera2d::default());
-    commands.spawn((Svg2d(svg), Origin::Center));
+    commands.spawn((Svg2d(svg),));
 }

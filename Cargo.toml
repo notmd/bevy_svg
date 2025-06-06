@@ -8,20 +8,29 @@ readme = "README.md"
 repository = "https://github.com/Weasy666/bevy_svg/"
 version = "0.16.0-rc1"
 keywords = ["gamedev", "graphics", "bevy", "svg"]
-categories = ["game-engines", "game-development", "graphics", "multimedia", "rendering"]
+categories = [
+    "game-engines",
+    "game-development",
+    "graphics",
+    "multimedia",
+    "rendering",
+]
 exclude = ["assets", "examples"]
 rust-version = "1.85"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
-default = ["2d", "3d"]
 
-2d = ["bevy/bevy_sprite"]
-3d = ["bevy/bevy_pbr"]
 
 [dependencies]
-bevy = { version = "0.16", default-features = false, features = ["bevy_asset", "bevy_core_pipeline", "bevy_log", "bevy_render"] }
+bevy = { version = "0.16", default-features = false, features = [
+    "bevy_asset",
+    "bevy_core_pipeline",
+    "bevy_log",
+    "bevy_render",
+    "bevy_sprite",
+] }
 copyless = "0.1"
 
 lyon_geom = "1.0"
