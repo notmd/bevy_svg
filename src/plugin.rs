@@ -48,7 +48,7 @@ pub struct SvgRenderPlugin;
 impl Plugin for SvgRenderPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(PostUpdate, origin::add_origin_state.in_set(SvgSet))
-            .add_systems(Last, (origin::apply_origin, svg_mesh_linker.in_set(SvgSet)))
+            .add_systems(Last, svg_mesh_linker.in_set(SvgSet))
             .add_plugins(render::SvgPlugin);
     }
 }

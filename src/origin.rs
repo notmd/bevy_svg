@@ -103,6 +103,7 @@ type ChangedMesh = Or<(Changed<Mesh2d>, Changed<Mesh3d>)>;
 
 /// Gets all SVGs with a changed origin or transform and checks if the origin offset
 /// needs to be applied.
+#[allow(dead_code)]
 pub fn apply_origin(
     svgs: Res<Assets<Svg>>,
     mut query: Query<

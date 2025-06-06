@@ -1,5 +1,5 @@
 use bevy::{
-    asset::{weak_handle, Handle},
+    asset::{Handle, weak_handle},
     ecs::{
         component::{Component, HookContext},
         world::DeferredWorld,
@@ -15,7 +15,6 @@ mod plugin;
 pub const SVG_3D_SHADER_HANDLE: Handle<Shader> =
     weak_handle!("00000000-0000-0000-762a-bdb74c2a5c66");
 
-pub use bundle::Svg3dBundle;
 pub use plugin::RenderPlugin;
 
 use crate::{origin::Origin, svg::Svg};

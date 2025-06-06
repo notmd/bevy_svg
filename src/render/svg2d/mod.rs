@@ -1,6 +1,6 @@
 use crate::{origin::Origin, svg::Svg};
 use bevy::{
-    asset::{weak_handle, Handle},
+    asset::{Handle, weak_handle},
     ecs::{
         component::{Component, HookContext},
         world::DeferredWorld,
@@ -16,7 +16,6 @@ mod plugin;
 pub const SVG_2D_SHADER_HANDLE: Handle<Shader> =
     weak_handle!("00000000-0000-0000-762a-bdb29826d266");
 
-pub use bundle::Svg2dBundle;
 pub use plugin::RenderPlugin;
 
 /// A component for 2D SVGs.
