@@ -1,5 +1,5 @@
 use bevy::{
-    asset::{io::Reader, AssetLoader, LoadContext},
+    asset::{AssetLoader, LoadContext, io::Reader},
     log::debug,
     tasks::ConditionalSendFuture,
 };
@@ -50,6 +50,14 @@ impl AssetLoader for SvgAssetLoader {
                 "Tessellating SVG: {} ... Done",
                 load_context.path().display()
             );
+
+            if mesh.count_vertices() == 0 {
+                return Err(FileSvgError {
+                    error: SvgError::InvalidMesh,
+                    path: load_context.path().display().to_string(),
+                });
+            }
+
             let mesh_handle = load_context.add_labeled_asset("mesh".to_string(), mesh);
             svg.mesh = mesh_handle;
 
@@ -71,6 +79,8 @@ pub enum SvgError {
     IoError(#[from] std::io::Error),
     #[error("failed to load an SVG: {0}")]
     SvgError(#[from] usvg::Error),
+    #[error("invalid SVG mesh")]
+    InvalidMesh,
 }
 
 /// An error that occurs when loading a texture from a file.
