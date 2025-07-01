@@ -78,10 +78,14 @@ impl VertexConstructor {
         let pos = {
             let mut point = usvg::tiny_skia_path::Point::from_xy(point.x, point.y);
             self.transform.map_point(&mut point);
-            Point::new(
-                point.x - self.view_box.w as f32 / 2.,
-                point.y - self.view_box.h as f32 / 2.,
-            )
+
+            let normalized_x = (point.x as f64 - self.view_box.x) / self.view_box.w;
+            let normalized_y = (point.y as f64 - self.view_box.y) / self.view_box.h;
+
+            let world_x = ((normalized_x - 0.5) * self.view_box.w) as f32;
+            let world_y = ((normalized_y - 0.5) * self.view_box.h) as f32;
+
+            Point::new(world_x, world_y)
         };
         Vertex {
             position: [pos.x, pos.y, 0.0],
