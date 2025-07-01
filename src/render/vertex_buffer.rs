@@ -11,6 +11,7 @@ use lyon_path::math::Point;
 use lyon_tessellation::{
     self, FillVertex, FillVertexConstructor, StrokeVertex, StrokeVertexConstructor,
 };
+use svgtypes::ViewBox;
 
 use crate::Convert;
 
@@ -69,6 +70,7 @@ impl Convert<Mesh> for VertexBuffers {
 pub struct VertexConstructor {
     pub(crate) color: Color,
     pub(crate) transform: usvg::Transform,
+    pub(crate) view_box: ViewBox,
 }
 
 impl VertexConstructor {
@@ -76,7 +78,10 @@ impl VertexConstructor {
         let pos = {
             let mut point = usvg::tiny_skia_path::Point::from_xy(point.x, point.y);
             self.transform.map_point(&mut point);
-            Point::new(point.x, point.y)
+            Point::new(
+                point.x - self.view_box.w as f32 / 2.,
+                point.y - self.view_box.h as f32 / 2.,
+            )
         };
         Vertex {
             position: [pos.x, pos.y, 0.0],

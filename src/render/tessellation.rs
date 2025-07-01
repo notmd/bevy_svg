@@ -34,6 +34,7 @@ pub fn generate_buffer(
                         VertexConstructor {
                             color: path.color,
                             transform: path.abs_transform,
+                            view_box: svg.view_box,
                         },
                     ),
                 ) {
@@ -49,6 +50,7 @@ pub fn generate_buffer(
                         VertexConstructor {
                             color: path.color,
                             transform: path.abs_transform,
+                            view_box: svg.view_box,
                         },
                     ),
                 ) {
